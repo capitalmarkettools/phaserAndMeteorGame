@@ -1,6 +1,8 @@
-Template.game1.helpers({
-    phaserGame: function() {
-	var game = new Phaser.Game("80","80", Phaser.AUTO, 'firstGame', { preload: preload, create: create, update:update });
+Template.game.rendered = function(){
+	var game = new Phaser.Game("100","100", Phaser.AUTO, 'game', {
+		preload: preload,
+		create: create,
+		update:update });
 	return game;
 	
 	function preload() {
@@ -17,6 +19,8 @@ Template.game1.helpers({
 	    for (var i = 0; i < numberOfCars; i++) {
 			xPositionStep = game.width/numberOfCars;
 			var tinyCar = tinyCars.create(xPositionStep*i, game.height/2, 'tinycar');
+            //console.log(tinyCar);
+            tinyCar.scale.setTo(0.1,0.1);
 			game.physics.p2.enable(tinyCar,false);
 	    }
 
@@ -49,15 +53,15 @@ Template.game1.helpers({
 		bounds1 = car.getBounds();
 		bounds2 = square.getBounds();
 
-		if (Phaser.Rectangle.intersects(bounds1, bounds2)) {
-			if (won == false){
-				won = true;
-				alert("You won!!");
-				game.destroy();
-			}
-
-
-		}
+		//if (Phaser.Rectangle.intersects(bounds1, bounds2)) {
+		//	if (won == false){
+		//		won = true;
+		//		alert("You won!!");
+		//		game.destroy();
+		//	}
+        //
+        //
+		//}
 
 		//Move square randonly
 		square.body.rotateRight(game.rnd.between(0,180));
@@ -81,6 +85,5 @@ Template.game1.helpers({
 	    obj1.body.force.x = Math.cos(angle) * speed;    // accelerateToObject
 	    obj1.body.force.y = Math.sin(angle) * speed;
 	}
+};
 
-    }
-})

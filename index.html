@@ -3,11 +3,23 @@
 </head>
 
 <body>
-  <h1>Phaser and Meteor</h1>
-
-  {{> game1}}
+  {{> game}}
+    {{> emitterCollideCallback}}
 </body>
 
-<template name="game1">
-  {{phaserGame}}
+<template name="game">
+    <div id="game"></div>
+</template>
+
+<template name="gravity">
+    <!--to fix-->
+    <div id="gravity"></div>
+</template>
+
+<template name="bubbles">
+    <div id="bubbles"></div>
+</template>
+
+<template name="emitterCollideCallback">
+    <div id="emitterCollideCallback"></div>
 </template>
